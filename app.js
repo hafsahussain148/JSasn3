@@ -10,13 +10,13 @@
     const btnElem = document.getElementById("searchBtn");
     const listElem =document.getElementById('movie-list')
     function displaySearchResults(results){
-        results.forEach(function(data) {
+        results.forEach(function(movie) {
             const li= document.createElement("li");
             const listItem=`
-            <div class="title">${data.title}</div>
+            <div class="title">${movie.title}</div>
             <div class="description">${data.genre}</div>
             `;
-            li.innerHTML=listItem;
+            li.innerHTML=document.createTextNode(listItem);
             listElem.appendChild(listItem);
         });
     }
@@ -25,9 +25,9 @@
         const query= inputElem.value;
 
         console.log(query);
-        const results= movies.filter(function (data){
-            return (data.title.toLowerCase().includes(query) || 
-            data.join("").toLowerCase().includes(query)); 
+        const results= movies.filter(function (movies){
+            return (movies.title.toLowerCase().includes(query) || 
+            movies.join("").toLowerCase().includes(query)); 
 
             // if(movies.title.toLowerCase().includes(query)){
             // return true;
@@ -41,6 +41,6 @@
 
     btnElem.addEventListener("click",search);
 
-
+console.log(movies);
 })();
 
